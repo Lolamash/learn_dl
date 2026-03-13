@@ -12,8 +12,8 @@ idx2char = ['e', 'h', 'l', 'o']
 x_data = [[1, 0, 2, 2, 3]] #'hello'
 y_data = [3, 1, 2, 3, 2] #'ohlol'
 
-inputs = torch.LongTensor(x_data) #inputs.shape: seqlen,batchsize,inputsize
-labels = torch.LongTensor(y_data) #labels.shape:seqlen*batchsize,1
+inputs = torch.LongTensor(x_data) # inputs.shape: seqlen,batchsize,inputsize
+labels = torch.LongTensor(y_data) # labels.shape:seqlen*batchsize,1
 
 class Model(torch.nn.Module):
     def __init__(self):
@@ -32,7 +32,7 @@ class Model(torch.nn.Module):
         x = self.emb(x)
         x, _ = self.rnn(x, hidden)
         x = self.fc(x)
-        return x.view(-1, num_class) #out.shape:seq_len*batch_size, hidden_size
+        return x.view(-1, num_class) # out.shape:seq_len*batch_size, hidden_size
 
 net = Model()
 criterion = torch.nn.CrossEntropyLoss()
